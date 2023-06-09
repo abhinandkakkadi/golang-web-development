@@ -9,6 +9,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// encoding/json package is used to convert json to struct object and and struct object to json (marshaling and un marshalling)
 type Notes struct {
 	Title       string `json:"notes"`
 	Description string `json:"description"`
@@ -24,7 +25,16 @@ func main() {
 	router.HandleFunc("/notes", viewNotes).Methods("GET")              // SEE ALL THE NOTES
 	router.HandleFunc("/updatenote/{id}", updateNote).Methods("PATCH") // UPDATE A NOTE
 	router.HandleFunc("/deletenote/{id}", deleteNote).Methods("DELETE") // DElETE
-	http.ListenAndServe(":8080",router)
+
+	server := &http.Server{
+		Addr: ":8080",
+		Handler: router,
+	}
+	fmt.Println("listening")
+	server.ListenAndServe()
+	
+	// http.ListenAndServe(":8080",router)
+	
 
 }
 
