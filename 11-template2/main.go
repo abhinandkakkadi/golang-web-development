@@ -6,10 +6,9 @@ import (
 	"text/template"
 )
 
-
-type Profile  struct {
+type Profile struct {
 	FirstName string
-	LastName string
+	LastName  string
 }
 
 // this is a template creation
@@ -24,16 +23,16 @@ func main() {
 	// passing a single data structure instance
 	user := Profile{
 		FirstName: "Abhinand",
-		LastName: "K R",
+		LastName:  "K R",
 	}
 	t := template.New("profile")
-	
-	te,err := t.Parse(tpl)
+
+	te, err := t.Parse(tpl)
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	err = te.Execute(os.Stdout,user)
+	err = te.Execute(os.Stdout, user)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -42,22 +41,22 @@ func main() {
 	users := []Profile{
 		{
 			FirstName: "abhinand",
-			LastName: "kr",
+			LastName:  "kr",
 		},
 		{
 			FirstName: "athira",
-			LastName: "k radhakrishnan",
+			LastName:  "k radhakrishnan",
 		},
 	}
 
 	// parsing the template in order for some data to be mapped to the template
 	// we can only pass data to parsed template
-	t2,err := t.Parse(tpl2)
+	t2, err := t.Parse(tpl2)
 	if err != nil {
 		fmt.Println(err)
 	}
-	
-	err = t2.Execute(os.Stdout,users)
+
+	err = t2.Execute(os.Stdout, users)
 	if err != nil {
 		fmt.Println(err)
 	}

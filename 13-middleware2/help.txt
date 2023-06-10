@@ -1,0 +1,11 @@
+Simple authorization using middleware
+
+here will have two application handler, one is index and other is message handler, message handler needs authentication . i.e we have to 
+pass password as query parameter and the middleware will check that with predefined password.
+
+if the user have come to /message or /index they will go through the same middleware
+inside the middleware a checking will done to obtain the path
+if the path is /message password will be checked and then next.ServeHTTP will be called 
+and if password wrong we will return
+
+if the path is /index will just call next.ServeHTTP as no authorization is required

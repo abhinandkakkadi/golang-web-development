@@ -21,20 +21,19 @@ var i = 0
 func main() {
 
 	router := mux.NewRouter()
-	router.HandleFunc("/addnotes", addNotes).Methods("POST")           // CREATE
-	router.HandleFunc("/notes", viewNotes).Methods("GET")              // SEE ALL THE NOTES
-	router.HandleFunc("/updatenote/{id}", updateNote).Methods("PATCH") // UPDATE A NOTE
+	router.HandleFunc("/addnotes", addNotes).Methods("POST")            // CREATE
+	router.HandleFunc("/notes", viewNotes).Methods("GET")               // SEE ALL THE NOTES
+	router.HandleFunc("/updatenote/{id}", updateNote).Methods("PATCH")  // UPDATE A NOTE
 	router.HandleFunc("/deletenote/{id}", deleteNote).Methods("DELETE") // DElETE
 
 	server := &http.Server{
-		Addr: ":8080",
+		Addr:    ":8080",
 		Handler: router,
 	}
 	fmt.Println("listening")
 	server.ListenAndServe()
-	
+
 	// http.ListenAndServe(":8080",router)
-	
 
 }
 
