@@ -12,7 +12,7 @@ type Profile  struct {
 	LastName string
 }
 
-
+// this is a template creation
 const tpl = `FirstName := {{.FirstName}} LastName := {{.LastName}}`
 const tpl2 = `
 	{{range .}}
@@ -50,6 +50,8 @@ func main() {
 		},
 	}
 
+	// parsing the template in order for some data to be mapped to the template
+	// we can only pass data to parsed template
 	t2,err := t.Parse(tpl2)
 	if err != nil {
 		fmt.Println(err)
