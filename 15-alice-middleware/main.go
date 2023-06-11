@@ -44,9 +44,9 @@ func main() {
 
 	router := mux.NewRouter()
 	router.Handle("/abhinand", middleware1(handler1))
-	// here we use alice package to implement middleware. inside the new the middleware function which returns a http.Handler is given and to the THenFunc again a http.Handler is 
+	// here we use alice package to implement middleware. inside the new the middleware function which returns a http.Handler is given and to the THenFunc again a http.Handler is
 	// given as argument
-	router.Handle("/athira", alice.New(middleware1,middleware2).ThenFunc(handler2))
+	router.Handle("/athira", alice.New(middleware1, middleware2).ThenFunc(handler2))
 	server := &http.Server{
 		Addr:    ":3000",
 		Handler: router,
